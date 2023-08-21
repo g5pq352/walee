@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" width="29.01" height="29.01" viewBox="0 0 29.01 29.01">
+  <g id="c" data-name="menu">
+    <g>
+      <path d="M21.01,6.58c0,.8,.65,1.45,1.45,1.45s1.45-.65,1.45-1.45-.65-1.45-1.45-1.45-1.45,.65-1.45,1.45Z" style="fill: #fff;"/>
+      <rect x=".65" y=".65" width="27.71" height="27.71" rx="7.88" ry="7.88" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 1.3px;"/>
+      <rect x="8.01" y="8.01" width="13" height="13" rx="6.5" ry="6.5" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 1.3px;"/>
+    </g>
+  </g>
+</svg>

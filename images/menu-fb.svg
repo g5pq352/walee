@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" width="30.24" height="30.24" viewBox="0 0 30.24 30.24">
+  <g id="c" data-name="menu">
+    <g>
+      <circle cx="15.12" cy="15.12" r="14.47" transform="translate(-4.63 6.94) rotate(-22.5)" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: 1.3px;"/>
+      <path d="M16.77,10.23c.06-.06,.28-.21,.91-.21,.35,0,.73,.04,1.14,.1l.62,.11,.54-3.02-.62-.12c-2.01-.38-3.61-.25-4.59,.38-.63,.4-1.07,.94-1.33,1.6-.18,.47-.26,1.13-.26,2.02v.64h-1.87v2.86h1.87v8.81h3.38V14.59h2.43v-2.86h-2.43v-.47c0-.78,.17-.99,.21-1.03Z" style="fill: #fff;"/>
+    </g>
+  </g>
+</svg>
