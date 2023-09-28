@@ -8,13 +8,13 @@
 	<?php include 'topmenu.php'; ?>
 
 	<div class="processWrap">
-		<div class="head-ch">共享流程</div>
+		<div class="head-ch text-rd-ch" data-delay=".75">共享流程</div>
 
 		<div class="process">
 			<div class="process-row">
-				<div class="head-en">SHARE THE PROCESS</div>
+				<div class="head-en text-rd-en" data-delay=".75">SHARE THE PROCESS</div>
 				<div class="innerWrap grid-x">
-					<ul class="processList cell auto">
+					<ul class="processList cell large-auto">
 						<li class="grid-x" data-where="0">
 							<div class="number"><span>01</span></div>
                             <div class="pic-area">
@@ -239,7 +239,7 @@
                             </article>
 						</li>
 					</ul>
-					<div class="processCatsWrap cell shrink">
+					<div class="processCatsWrap cell large-shrink show-for-large">
 						<ul class="processCats" id="whereList">
 							<li class="current">
 								<span class="num">01</span>
@@ -291,16 +291,18 @@
 							</li>
 						</ul>
 					</div>
+
+                    <ul id="process-in-dots" class="align-center"></ul>
 				</div>
 			</div>
             <div class="guard text-center">
 				<div class="head-area">
-					<div class="ch">娃力共享<i>，</i>換汝守護</div>
+					<div class="ch text-rd-ch">娃力共享<i>，</i>換汝守護</div>
 					<div class="en"><img src="images/save-logo.svg"></div>
 				</div>
 			</div>
 			<div class="goto text-center">
-				<a href="javascript:;"><div class="arrow-go">
+				<a href="contract.php"><div class="arrow-go">
 					<div class="grid-x align-center-middle">
 						<div class="title">換我守護</div>
 						<svg width="99.37" height="93.98" viewBox="0 0 99.37 93.98">
@@ -324,6 +326,65 @@
 </html>
 
 <script>
+    if(device == 'desktop'){
+        var _windowH = $(".process").offset().top
+        $(window).on("scroll", () => {
+            var _scrollTop = $(window).scrollTop()
+
+            if (_scrollTop > _windowH * 0.9) {
+                $(".topmenu-fixed").removeClass("is-white")
+                return false;
+            } else {
+                $(".topmenu-fixed").addClass("is-white")
+            }
+        })
+    }
+
+    function PrefixInteger(num, length){
+        return (Array(length).join('0')+num).slice(-length)
+    }
+    
+
+    if(device == 'mobile'){
+        var $carousel = $(".processList").flickity({
+			"prevNextButtons": false,
+			"pageDots": false,
+			"wrapAround": true,
+			"autoPlay": 4000,
+			"pauseAutoPlayOnHover": false,
+			"imagesLoaded": true,
+			"cellAlign": "center",
+			"arrowShape": ""
+		});
+
+		var flkty = $carousel.data('flickity');
+		var cellElements = $carousel.flickity('getCellElements');
+
+		for (var i = 0; i < cellElements.length; i++) {
+            var k = 1 + i;
+			$("<li><span>"+ PrefixInteger(k, 2) +"</span></li>").appendTo( $("#process-in-dots") )
+		}
+
+		$("#process-in-dots li").first().addClass("current go")
+
+		$("#process-in-dots li").on("click", function () {
+			$carousel.flickity('select', $(this).index())
+		})
+
+		$carousel.on( 'change.flickity', function( event, index ) {
+            $("#process-in-dots li").eq(index).addClass("current").siblings().removeClass("current")
+            $("#process-in-dots li").eq(index).addClass("go").siblings().removeClass("go")
+
+            $("#process-in-dots li").each(function(i, el){
+                if(i <= index){
+                    $(el).addClass("go")
+                }
+            })
+		});
+    }
+    
+    $(".processList li").first().addClass("is-boom")
+    
 	var $where = $("[data-where]").get().reverse()
 
 	$(window).scroll(function() {
@@ -368,4 +429,5 @@
             });
         }
 	});
+    
 </script>

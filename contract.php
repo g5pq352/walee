@@ -7,32 +7,34 @@
 <body>
 	<?php include 'topmenu.php'; ?>
 
+	<div class="contract-fixed hide-for-large"><img src="images/contract-cats-mobile.svg"></div>
+	
 	<div class="contractWrap">
-		<div class="head-ch">共享合約條款</div>
+		<div class="head-ch text-center text-rd-ch" data-delay=".75">共享合約條款</div>
 
 		<div class="contract">
 			<div class="contract-row">
-				<div class="head-en">CONTRACT TERMS</div>
+				<div class="head-en text-center text-rd-en" data-delay=".75">CONTRACT TERMS</div>
 				<div class="innerWrap grid-x">
-					<ul class="contractList cell auto">
+					<ul class="contractList cell large-auto">
 						<li class="grid-x" data-where="0">
-							<div class="num cell shrink grid-x align-center-middle">01</div>
+							<div class="num cell shrink grid-x align-center-middle show-for-large">01</div>
 							<div class="content-area cell auto">
-								<div class="title">首付款項<span class="note">單筆付清 / 12 期分期付款</span></div>
+								<div class="title"><div class="num cell shrink grid-x align-center-middle hide-for-large">01</div>首付款項<span class="note">單筆付清 / 12 期分期付款</span></div>
 								<div class="content">於官網下單後，首付款項含保證金12000元 (可退還有收據、無發票) + 床墊5990元 (非租賃項目且為個人衛生用品故不回收、有發票)。</div>
 							</div>
 						</li>
 						<li class="grid-x" data-where="1">
-							<div class="num cell shrink grid-x align-center-middle">02</div>
+							<div class="num cell shrink grid-x align-center-middle show-for-large">02</div>
 							<div class="content-area cell auto">
-								<div class="title">月租費</div>
+								<div class="title"><div class="num cell shrink grid-x align-center-middle hide-for-large">02</div>月租費</div>
 								<div class="content">超過12個月租期後，即解除綁約限制。任何時間進入官網「我的訂單」，點選停止租約即可，下個月即停止扣款，我司客服專員會安排下個月到期日之後算起10天內，到府拆裝回廠，進行清消檢修SOP 。</div>
 							</div>
 						</li>
 						<li class="grid-x" data-where="2">
-							<div class="num cell shrink grid-x align-center-middle">03</div>
+							<div class="num cell shrink grid-x align-center-middle show-for-large">03</div>
 							<div class="content-area cell auto">
-								<div class="title">退租說明</div>
+								<div class="title"><div class="num cell shrink grid-x align-center-middle hide-for-large">03</div>退租說明</div>
 								<div class="content">
 									購買官方產品將提供七天鑑賞期的無條件退換貨服務。<br>
 									<br>
@@ -43,37 +45,47 @@
 							</div>
 						</li>
 						<li class="grid-x" data-where="3">
-							<div class="num cell shrink grid-x align-center-middle">04</div>
+							<div class="num cell shrink grid-x align-center-middle show-for-large">04</div>
 							<div class="content-area cell auto">
-								<div class="title">辦理退租</div>
+								<div class="title"><div class="num cell shrink grid-x align-center-middle hide-for-large">04</div>辦理退租</div>
 								<div class="content">如欲辦理退換貨，請協助保持欲退換貨商品之完整包裝，並聯繫LINE@官方帳號「，內容中需附上訂單編號或購買證明（發票、購物明細等）及商品照片，將會由負責人員為您辦理退換貨事宜。</div>
 							</div>
 						</li>
 					</ul>
-					<div class="contractCatsWrap cell shrink">
-						<ul class="contractCats" id="whereList">
-							<li class="current">
-								<span class="num">01</span>
-								<span class="title">首付付款</span>
-							</li>
-							<li>
-								<span class="num">02</span>
-								<span class="title">月租費</span>
-							</li>
-							<li>
-								<span class="num">03</span>
-								<span class="title">退租說明</span>
-							</li>
-							<li>
-								<span class="num">04</span>
-								<span class="title">辦理退租</span>
-							</li>
-						</ul>
+					<div class="contractCatsWrap cell large-shrink">
+						<div class="bg hide-for-large"></div>
+
+						<div class="contractCats-item">
+							<ul class="contractCats" id="whereList">
+								<li class="current"><a href="javascript:;">
+									<span class="num">01</span>
+									<span class="title">首付付款</span>
+									</a></li>
+								<li><a href="javascript:;">
+									<span class="num">02</span>
+									<span class="title">月租費</span>
+								</a></li>
+								<li><a href="javascript:;">
+									<span class="num">03</span>
+									<span class="title">退租說明</span>
+								</a></li>
+								<li><a href="javascript:;">
+									<span class="num">04</span>
+									<span class="title">辦理退租</span>
+								</a></li>
+							</ul>
+
+							<div class="contractCats-close hide-for-large"><svg width="19.99" height="18.12" viewBox="0 0 19.99 18.12">
+								<circle cx="2.82" cy="15.29" r="2.82" style="fill: #736357;"/>
+								<circle cx="17.17" cy="2.82" r="2.82" style="fill: #736357;"/>
+								<path d="M-.97,7.76H22.25v1.47c0,.59-.48,1.06-1.06,1.06H-2.17v-1.33c0-.66,.54-1.2,1.2-1.2Z" transform="translate(9.32 -4.46) rotate(45)" style="fill: #736357;"/>
+							</svg></div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="goto text-center">
-				<a href="javascript:;"><div class="arrow-go">
+				<a href="sharing.php"><div class="arrow-go">
 					<div class="grid-x align-center-middle">
 						<div class="title">換我守護</div>
 						<svg width="99.37" height="93.98" viewBox="0 0 99.37 93.98">
@@ -97,6 +109,30 @@
 </html>
 
 <script>
+	
+	$(".contract-fixed").on("click", function(){
+		$(".contractCatsWrap").fadeIn(300)
+	})
+	$(".contractCats-close, .contractCatsWrap .bg").on("click", function(){
+		$(".contractCatsWrap").fadeOut(300)
+	})
+
+
+	if(device == 'desktop'){
+		var _windowH = $(".contract").offset().top
+		$(window).on("scroll", () => {
+			var _scrollTop = $(window).scrollTop()
+
+			if (_scrollTop > _windowH * 0.9) {
+				$(".topmenu-fixed").removeClass("is-white")
+				return false;
+			} else {
+				$(".topmenu-fixed").addClass("is-white")
+			}
+		})
+	}
+
+	
 	var $where = $("[data-where]").get().reverse()
 
 	$(window).scroll(function() {

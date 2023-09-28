@@ -8,10 +8,10 @@
 	<?php include 'topmenu.php'; ?>
 
 	<div class="article-bannerWrap grid-x">
-		<div class="items-area cell shrink">
+		<div class="items-area cell large-shrink">
 			<div class="head-area">
-				<div class="ch">阿媽教汝</div>
-				<div class="en">CHILD-REARING CUSTOMS</div>
+				<div class="ch text-rd-ch" data-delay=".75">阿媽教汝</div>
+				<div class="en text-rd-en" data-delay=".75">CHILD-REARING CUSTOMS</div>
 			</div>
 			<ul class="articleCats grid-x align-middle">
 				<li class="current">ALL</li>
@@ -20,16 +20,22 @@
 				<li>其他</li>
 			</ul>
 		</div>
-		<div class="article-area cell auto"><a href="rearing_detail.php" class="grid-x align-bottom">
-			<div class="article cell auto">
+		<div class="article-area cell large-auto"><a href="rearing_detail.php" class="grid-x align-bottom">
+			<div class="article cell large-auto">
 				<div class="cats grid-x align-middle">
 					<div class="cat grid-x align-center-middle">育兒知識</div>
 					<div class="date">2023 / 07 / 12</div>
 				</div>
+				<div class="pic-area hide-for-large">
+					<div class="tiger-area"><img src="images/tiger-mobile-1.png" width="108"></div>
+					<div class="tiger-area-2"><img src="images/tiger-mobile-2.png" width="108"></div>
+					<div class="pic"><img src="images/article-1.jpg"></div>
+					<div class="more">MORE</div>
+				</div>
 				<div class="title">嬰兒床內擺放知識多!原來只能有一條小被被?</div>
 				<div class="content">家長多習慣在嬰兒床四角裝上鍊條，掛上玩具做為安撫寶寶情緒、幫助哄睡之用還能隨時.....</div>
 			</div>
-			<div class="pic-area cell shrink">
+			<div class="pic-area cell large-shrink show-for-large">
 				<div class="tiger-area">
 					<svg width="357.97" height="246.58" viewBox="0 0 357.97 246.58" class="deco">
 						<defs>
@@ -97,6 +103,10 @@
 	<div class="articleWrap">
 		<ul class="articleList">
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">育兒知識</div>
+					<div class="date">2023 / 07 / 05</div>
+				</div>
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-1.jpg"></div>
 					<div class="more">MORE</div>
@@ -106,13 +116,17 @@
 						<div class="title">0～3歲語言關鍵發展</div>
 						<div class="content">爸媽是寶寶最重要的模仿與學習對象，請多和寶寶說話，表達自己的意思時，可以加上......</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">育兒知識</div>
 						<div class="date">2023 / 07 / 05</div>
 					</div>
 				</div>
 			</a></li>
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">虎爺習俗</div>
+					<div class="date">2023 / 06 / 30</div>
+				</div>
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-2.jpg"></div>
 					<div class="more">MORE</div>
@@ -122,13 +136,17 @@
 						<div class="title">俏皮活潑的虎爺是孩子的守護神</div>
 						<div class="content">民間相信「台灣虎爺」是小孩的守護神，能避邪、護佑孩童平安長大，並掌管孩子聰明伶俐</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">虎爺習俗</div>
 						<div class="date">2023 / 06 / 30</div>
 					</div>
 				</div>
 			</a></li>
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">其他</div>
+					<div class="date">2023 / 06 / 30</div>
+				</div>		
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-3.jpg"></div>
 					<div class="more">MORE</div>
@@ -138,13 +156,17 @@
 						<div class="title">寶寶的食療法分享</div>
 						<div class="content">每兩個月用不同主題來找到快樂，以及關於快樂的小練習，讓我們一起，發現生活中的快樂。</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">其他</div>
 						<div class="date">2023 / 06 / 30</div>
 					</div>
 				</div>
 			</a></li>
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">虎爺習俗</div>
+					<div class="date">2023 / 06 / 30</div>
+				</div>		
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-4.jpg"></div>
 					<div class="more">MORE</div>
@@ -154,13 +176,17 @@
 						<div class="title">俏皮活潑的虎爺是孩子的守護神</div>
 						<div class="content">民間相信「台灣虎爺」是小孩的守護神，能避邪、護佑孩童平安長大，並掌管孩子聰明伶俐</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">虎爺習俗</div>
 						<div class="date">2023 / 06 / 30</div>
 					</div>
 				</div>
 			</a></li>
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">其他</div>
+					<div class="date">2023 / 06 / 30</div>
+				</div>			
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-5.jpg"></div>
 					<div class="more">MORE</div>
@@ -170,13 +196,17 @@
 						<div class="title">寶寶的食療法分享</div>
 						<div class="content">每兩個月用不同主題來找到快樂，以及關於快樂的小練習，讓我們一起，發現生活中的快樂。</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">其他</div>
 						<div class="date">2023 / 06 / 30</div>
 					</div>
 				</div>
 			</a></li>
 			<li><a href="rearing_detail.php">
+				<div class="cats-area grid-x align-middle hide-for-large">
+					<div class="cat grid-x align-center-middle">育兒知識</div>
+					<div class="date">2023 / 07 / 05</div>
+				</div>
 				<div class="pic-area">
 					<div class="pic"><img src="images/rearing-6.jpg"></div>
 					<div class="more">MORE</div>
@@ -186,7 +216,7 @@
 						<div class="title">0～3歲語言關鍵發展</div>
 						<div class="content">爸媽是寶寶最重要的模仿與學習對象，請多和寶寶說話，表達自己的意思時，可以加上......</div>
 					</div>
-					<div class="cats-area cell shrink">
+					<div class="cats-area cell shrink show-for-large">
 						<div class="cat grid-x align-center-middle">育兒知識</div>
 						<div class="date">2023 / 07 / 05</div>
 					</div>

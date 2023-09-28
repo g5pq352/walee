@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" width="143.93" height="136" viewBox="0 0 143.93 136">
+  <g id="c" data-name="背景">
+    <g>
+      <rect x="0" y="0" width="143.93" height="136" rx="63.26" ry="63.26" style="fill: #f9f4ed;"/>
+      <circle cx="71.96" cy="46.56" r="17.04" style="fill: #024737;"/>
+      <path d="M67.79,76.59h8.34c15.54,0,28.15,12.61,28.15,28.15h0c0,.97-.78,1.75-1.75,1.75H41.39c-.97,0-1.75-.78-1.75-1.75h0c0-15.54,12.61-28.15,28.15-28.15Z" style="fill: #024737;"/>
+    </g>
+  </g>
+</svg>

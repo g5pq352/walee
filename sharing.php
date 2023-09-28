@@ -8,10 +8,10 @@
 	<?php include 'topmenu.php'; ?>
 
 	<div class="sharingWrap">
-		<div class="head-ch">共享方案</div>
+		<div class="head-ch text-vue-ch" data-delay=".75">共享方案</div>
 
 		<div class="sharing" id="sharingApp">
-			<div class="head-en">SHARING PLAN</div>
+			<div class="head-en text-vue-en" data-delay=".75">SHARING PLAN</div>
 
 			<div class="sharing-items">
 				<ul class="sharingCats">
@@ -21,7 +21,7 @@
 					</li>
 					<li :class="{'current': cat == 1}" @click="cat = 1">
 						<div class="en">PLAN B</div>
-						<div class="ch">12 期分期付款</div>
+						<div class="ch">12期分期付款</div>
 					</li>
 				</ul>
 
@@ -30,7 +30,7 @@
 						<div class="items-area">
 							<div class="item grid-x">
 								<div class="title-area cell shrink">
-									<span>首付</span>
+									<div class="grid-y align-middle head"><span>首付</span></div>
 									<div class="note">綁約<i>12</i>個月</div>
 								</div>
 								<div class="content-area cell auto">
@@ -52,7 +52,7 @@
 										</div>
 									</div>
 									<div class="total grid-x align-justify align-bottom">
-										<div class="gon">共</div>
+										<div class="gon">合計</div>
 										<div class="">
 											18,880
 											<i>元</i>
@@ -62,7 +62,7 @@
 							</div>
 							<div class="item grid-x">
 								<div class="title-area cell shrink">
-									<span class="sec">月費</span>
+									<span class="sec grid-x align-center-middle head"><span>月費</span></span>
 								</div>
 								<div class="content-area cell auto">
 									<div class="total grid-x align-justify align-bottom">
@@ -77,7 +77,7 @@
 							</div>
 						</div>
 						<div class="remake">
-							<ul class="remakeList">
+							<ul class="remakeList show-for-large">
 								<li class="grid-x align-top">
 									<div class="title cell shrink">保證金:</div>
 									<div class="content cell auto">僅提供收據， 停約結算後無息退還。</div>
@@ -89,7 +89,20 @@
 								<li class="grid-x align-top">
 									<div class="title cell shrink">偏鄉地區</div>
 									<div class="content cell auto download">
-										<a href="javascript:;"><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
+										<a href="images/偏遠加計運費.pdf" target="_blank"><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
+									</div>
+								</li>
+							</ul>
+							<ul class="remakeList hide-for-large">
+								<li>
+									<div class="content"><i class="title">保證金：</i>僅提供收據， 停約結算後無息退還。</div>
+								</li>
+								<li>
+									<div class="content"><i class="title">一次性消費項目：</i>提供電子發票， 停約後不可退還，  內容主要包括嬰兒貼身軟裝、運輸、  組裝服務、  包裝耗材。</div>
+								</li>
+								<li>
+									<div class="content download">
+										<a href="javascript:;"><i class="title">偏鄉地區</i><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
 									</div>
 								</li>
 							</ul>
@@ -100,7 +113,7 @@
 						<div class="items-area">
 							<div class="item grid-x">
 								<div class="title-area cell shrink">
-									<span>首付</span>
+									<div class="grid-y align-middle head"><span>首付</span></div>
 									<div class="note">綁約<i>12</i>個月</div>
 								</div>
 								<div class="content-area cell auto">
@@ -117,12 +130,19 @@
 										<div class="num grid-x align-center-middle">02</div>
 										<div class="title">一次性消費</div>
 										<div class="price">
-											<span>6,880<i>元</i></span>
+											<span>7,680<i>元</i></span>
 											<div class="note">(不可退還)</div>
 										</div>
 									</div>
 									<div class="total grid-x align-justify align-bottom">
-										<div class="gon">共</div>
+										<div class="gon">合計</div>
+										<div class="">
+											19,860
+											<i>元</i>
+										</div>
+									</div>
+									<div class="total month grid-x align-justify align-bottom">
+										<div class="gon">月付</div>
 										<div class="">
 											1,640
 											<i>元</i>
@@ -132,7 +152,7 @@
 							</div>
 							<div class="item grid-x">
 								<div class="title-area cell shrink">
-									<span class="sec">月費</span>
+									<div class="sec grid-x align-center-middle head"><span>月費</span></div>
 								</div>
 								<div class="content-area cell auto">
 									<div class="total grid-x align-justify align-bottom">
@@ -147,7 +167,7 @@
 							</div>
 						</div>
 						<div class="remake">
-							<ul class="remakeList">
+							<ul class="remakeList show-for-large">
 								<li class="grid-x align-top">
 									<div class="title cell shrink">保證金:</div>
 									<div class="content cell auto">僅提供收據， 停約結算後無息退還。</div>
@@ -159,7 +179,20 @@
 								<li class="grid-x align-top">
 									<div class="title cell shrink">偏鄉地區</div>
 									<div class="content cell auto download">
-										<a href="javascript:;"><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
+										<a href="images/偏遠加計運費.pdf" target="_blank"><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
+									</div>
+								</li>
+							</ul>
+							<ul class="remakeList hide-for-large">
+								<li>
+									<div class="content"><i class="title">保證金：</i>僅提供收據， 停約結算後無息退還。</div>
+								</li>
+								<li>
+									<div class="content"><i class="title">一次性消費項目：</i>提供電子發票， 停約後不可退還，  內容主要包括嬰兒貼身軟裝、運輸、  組裝服務、  包裝耗材。</div>
+								</li>
+								<li>
+									<div class="content download">
+										<a href="javascript:;"><i class="title">偏鄉地區</i><span>運費表下載</span><img src="images/sharing-download.svg" class="icon"></a>
 									</div>
 								</li>
 							</ul>
@@ -179,7 +212,7 @@
 				</div>
 
 				<div class="goto">
-					<a href="javascript:;"><div class="arrow-go">
+					<a href="confirm.php"><div class="arrow-go">
 						<div class="grid-x align-center-middle">
 							<div class="title">換我守護</div>
 							<svg width="99.37" height="93.98" viewBox="0 0 99.37 93.98">
@@ -204,6 +237,16 @@
 </html>
 
 <script>
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+
 	new Vue({
 		el: '#sharingApp',
 		data: {
@@ -213,8 +256,84 @@
 		methods: {},
 		filters: {},
 		mounted() {
+			$(".text-vue-ch").each(function (i, el) {
+				var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
 
+				var _t = new SplitText(el, {
+					type: "chars,words",
+					charsClass: "char++",
+				})
+			
+				shuffleArray(_t.chars);
+			
+				// show
+				var _setting_s = {
+					scrollTrigger: {
+						trigger: el,
+						start: "top 80%",
+						end: "bottom 50%",
+						toggleActions: "play none none none",
+			
+					},
+					delay: .75,
+					duration: 1.5,
+					opacity: 0,
+					stagger: 0.1,
+					// '-webkit-filter': 'blur(3px)',
+					ease: "sine.out",
+				}
+				var _p_s = $(el).data("f")
+				var _obj_s = Object.assign(_setting_s, _p_s);
+				gsap.from(_t.chars, _obj_s);
+			
+			})
+			
+			$(".text-vue-en").each(function (i, el) {
+				var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+
+				var _t = new SplitText(el, {
+					type: "chars,words",
+					charsClass: "char++",
+				})
+			
+				shuffleArray(_t.chars);
+			
+				// show
+				var _setting_s = {
+					scrollTrigger: {
+						trigger: el,
+						start: "top 80%",
+						end: "bottom 50%",
+						toggleActions: "play none none none",
+			
+					},
+					delay: .75,
+					duration: 1,
+					opacity: 0,
+					stagger: 0.05,
+					// '-webkit-filter': 'blur(3px)',
+					ease: "sine.out",
+				}
+				var _p_s = $(el).data("f")
+				var _obj_s = Object.assign(_setting_s, _p_s);
+				gsap.from(_t.chars, _obj_s);
+			
+			})
 		},
 		updated() {},
 	})
+
+	if(device == 'desktop'){
+		var _windowH = $("#sharingApp").offset().top
+		$(window).on("scroll", () => {
+			var _scrollTop = $(window).scrollTop()
+
+			if (_scrollTop > _windowH * 0.9) {
+				$(".topmenu-fixed").removeClass("is-white")
+				return false;
+			} else {
+				$(".topmenu-fixed").addClass("is-white")
+			}
+		})
+	}
 </script>

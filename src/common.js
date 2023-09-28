@@ -1,3 +1,33 @@
+Flickity.prototype._createPrevNextCells = function() {
+	this.on('select', this.setPrevNextCells);
+};
+
+Flickity.prototype.setPrevNextCells = function() {
+	// remove classes
+	changeSlideClasses(this.previousSlide, 'remove', 'is-prev');
+	changeSlideClasses(this.nextSlide, 'remove', 'is-next');
+	// set slides
+	this.previousSlide = this.slides[(this.selectedIndex - 1 + this.slides.length) % this.slides.length];
+	this.nextSlide = this.slides[(this.selectedIndex + 1 + this.slides.length) % this.slides.length];
+	// add classes
+	changeSlideClasses(this.previousSlide, 'add', 'is-prev');
+	changeSlideClasses(this.nextSlide, 'add', 'is-next');
+
+	// move index
+	this.prev_dotsSlide = (this.selectedIndex - 1 + this.slides.length) % this.slides.length;
+	this.next_dotsSlide = (this.selectedIndex + 1 + this.slides.length) % this.slides.length;
+};
+
+function changeSlideClasses(slide, method, className) {
+	if (!slide) {
+		return;
+	}
+	slide.getCellElements().forEach(function(cellElem) {
+		cellElem.classList[method](className);
+	});
+}
+
+
 $(window).on("resize", function() {
 	if ($(this).width() > 1025) {
 		if (window.device == 'mobile') {
@@ -83,12 +113,93 @@ class RyderMarquee {
 		gsap.ticker.add(this.render.bind(this));
 	}
 }
+class RyderMarqueeHover {
+	constructor(el, direct = 0) {
+		this.hero = $(el).parent().get(0)
+		this.wrapper = el
+		this.delta = 0
+		this.transform = 0
+		this.step = (device == 'mobile') ? 0.6 : 0.8
+		this.direct = direct % 2
+		this.hover = false
+
+		if (this.direct == 1) {
+			this.wrapper.style.transform = `translate3d(-${this.wrapper.getBoundingClientRect().width / 2}px, 0, 0)`;
+			this.transform = -this.wrapper.getBoundingClientRect().width / 2
+		}
+
+		if(device != 'mobile'){
+			$(el).hover(() => {
+				this.hover = true
+			}, () => {
+				this.hover = false
+			})
+		}
+	}
+
+	animate() {
+		if (!this.hover) {
+			this.transform += this.step
+		}
+
+		if (this.direct == 1) {
+			if (this.transform > 0) {
+				this.transform = -this.wrapper.getBoundingClientRect().width / 2;
+			}
+			this.wrapper.style.transform = `translate3d(${this.transform}px, 0, 0)`;
+		} else {
+			if (this.transform > this.wrapper.getBoundingClientRect().width / 2) {
+				this.transform = 0;
+			}
+			this.wrapper.style.transform = `translate3d(-${this.transform}px, 0, 0)`;
+		}
+	}
+
+	render() {
+		this.scrollY = $(window).scrollTop()
+
+		const bounding = this.hero.getBoundingClientRect();
+		const distance = (window.innerHeight + this.scrollY) - (bounding.top + this.scrollY);
+		const percentage = distance / ((window.innerHeight + bounding.height) / 100);
+
+		if (percentage > 0 && percentage < 100) {
+			this.animate();
+		}
+	}
+
+	create() {
+		gsap.ticker.add(this.render.bind(this));
+	}
+}
 
 $(".marquee").each(function (i, el) {
 	var $copy = $(el).contents().clone()
 	$(el).append($copy)
 
 	var ryderMarquee = new RyderMarquee(el, i).create()
+})
+
+$(".marqueeHover").each(function (i, el) {
+	var $copy = $(el).contents().clone()
+	$(el).append($copy)
+
+	var ryderMarquee = new RyderMarqueeHover(el, i).create()
+})
+
+
+$("[data-depth]").each(function (i, el) {
+	if(device == 'desktop'){
+		gsap.to(el, {
+			scrollTrigger: {
+				trigger: el,
+				start: "top top",
+				end: "bottom top",
+				scrub: true,
+			},
+			y: `${$(window).height() * el.dataset.depth}px`,
+			ease: "none",
+		});
+	}
 })
 
 $(".scrolldown").on("click", function () {
@@ -99,8 +210,75 @@ $(".scrolldown").on("click", function () {
 	});
 })
 
+if(device == 'mobile'){
+	$(".mobile-bg").css("height", $(".menu-fixed .menuListWrap").height() + 76 + 38)
+	var $menu_tl = gsap.timeline({
+		paused: true,
+	}).from(".menu-fixed .color-bg", {
+		width: 0,
+		duration: .75,
+		ease: "circle.out"
+	}).from(".menu-fixed .mobile-bg", {
+		width: 0,
+		duration: .75,
+		ease: "circle.out"
+	}, 0).fromTo($(".menuList-mobile li"), {
+		opacity: 0,
+		y: 20,
+	}, {
+		duration: 1,
+		y: 0,
+		opacity: 1,
+		stagger: 0.05,
+		ease: "circle.out"
+	}, "<.5").fromTo('.menu-fixed .menuListWrap .items-area', {
+		opacity: 0,
+	}, {
+		opacity: 1,
+		duration: 1,
+		ease: "none",
+	}, "<1")
+}else{
+	var $menu_tl = gsap.timeline({
+		paused: true,
+	}).from(".menu-fixed .color-bg", {
+		width: 0,
+		duration: .75,
+		ease: "circle.out"
+	}).fromTo($(".menuList li"), {
+		opacity: 0,
+		y: 20,
+	}, {
+		duration: 1,
+		y: 0,
+		opacity: 1,
+		stagger: 0.05,
+		ease: "circle.out"
+	}).fromTo('.menu-fixed .menuListWrap .items-area', {
+		opacity: 0,
+	}, {
+		opacity: 1,
+		duration: 1,
+		ease: "none",
+	}, "<.5").fromTo('.menu-fixed .info-area .pic', {
+		x: 420,
+		opacity: 0,
+	}, {
+		opacity: 1,
+		duration: 1,
+		x: 0,
+		ease: "circle.out"
+	}, "<.25")
+}
+
+
+
+
+
 $(".openmenu").on("click", function(){
 	$(".menu-fixed").addClass("is-show")
+
+	$menu_tl.play(0)
 })
 $(".hamburger").on("click", function(){
 	$(".menu-fixed").removeClass("is-show")
@@ -111,8 +289,6 @@ $(".menuList >li").hover(function() {
 }, function() {
 	$(this).find(".submenuList").stop(true).slideUp(300)
 })
-
-
 
 
 // const $menu_tl = gsap.timeline({
@@ -131,6 +307,8 @@ $(".menuList >li").hover(function() {
 // 	},
 // 	ease: "circle.out"
 // })
+
+
 
 
 
@@ -153,15 +331,6 @@ $(".menuList >li").hover(function() {
 // 	},
 // 	// markers: true,
 // });
-
-
-
-
-
-// new SplitText('.ryder-split .item', {
-// 	type: "chars",
-// })
-
 
 
 
@@ -234,9 +403,112 @@ $(".menuList >li").hover(function() {
 
 
 
+if(device != 'mobile'){
+	function shuffleArray(array) {
+		for (var i = array.length - 1; i > 0; i--) {
+			var j = Math.floor(Math.random() * (i + 1));
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+		return array;
+	}
+
+	$(".text-rd-ch").each(function (i, el) {
+		var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+
+		var _t = new SplitText(el, {
+			type: "chars,words",
+			charsClass: "char++",
+		})
+	
+		shuffleArray(_t.chars);
+	
+		// show
+		var _setting_s = {
+			scrollTrigger: {
+				trigger: el,
+				start: "top 80%",
+				end: "bottom 50%",
+				toggleActions: "play none none none",
+	
+			},
+			delay: _delay,
+			duration: 1.5,
+			opacity: 0,
+			stagger: 0.1,
+			// '-webkit-filter': 'blur(3px)',
+			ease: "sine.out",
+		}
+		var _p_s = $(el).data("f")
+		var _obj_s = Object.assign(_setting_s, _p_s);
+		gsap.from(_t.chars, _obj_s);
+	
+	})
+	
+	$(".text-rd-en").each(function (i, el) {
+		var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+
+		var _t = new SplitText(el, {
+			type: "chars,words",
+			charsClass: "char++",
+		})
+	
+		shuffleArray(_t.chars);
+	
+		// show
+		var _setting_s = {
+			scrollTrigger: {
+				trigger: el,
+				start: "top 80%",
+				end: "bottom 50%",
+				toggleActions: "play none none none",
+	
+			},
+			delay: _delay,
+			duration: 1,
+			opacity: 0,
+			stagger: 0.05,
+			// '-webkit-filter': 'blur(3px)',
+			ease: "sine.out",
+		}
+		var _p_s = $(el).data("f")
+		var _obj_s = Object.assign(_setting_s, _p_s);
+		gsap.from(_t.chars, _obj_s);
+	
+	})
+	
+	$(".content-show").each(function (i, el) {
+		var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+
+		var _t = new SplitText(el, {
+			type: "chars,words",
+			charsClass: "char++",
+		})
+	
+		// show
+		var _setting_s = {
+			scrollTrigger: {
+				trigger: el,
+				start: "top 80%",
+				end: "bottom 50%",
+				toggleActions: "play none none none",
+	
+			},
+			delay: _delay,
+			duration: 1.5,
+			opacity: 0,
+			// '-webkit-filter': 'blur(3px)',
+			ease: "sine.out",
+		}
+		var _p_s = $(el).data("f")
+		var _obj_s = Object.assign(_setting_s, _p_s);
+		gsap.from(_t.chars, _obj_s);
+	})
+}
 
 
-$(".fancy-close, .fancy-closeBlock, .dialog-fancyContainer .btn").on("click", function() {
+$(".fancy-close, .fancy-closeBlock, .dialog-fancyContainer .btn, #confirm-close").on("click", function() {
 	$(".m-fancyWrap").removeClass("is-show")
 	gsap.delayedCall(0.5, function() {
 		$("body").removeClass("is-lock")
@@ -250,7 +522,13 @@ $(".addtocart").on("click", function() {
 })
 
 
-
+$("#logout").on("click", function() {
+	$(".logout-fancyWrap").addClass("is-show").scrollTop(0)
+	$("body").addClass("is-lock")
+	gsap.delayedCall(1, function() {
+		location.href = 'login.php'
+	});
+})
 
 
 $(".hamburger-area").on("click", function() {
@@ -258,158 +536,12 @@ $(".hamburger-area").on("click", function() {
 	$(".mobile-topmenuWrap").fadeToggle(500)
 })
 
-
-
-
-
-
-
-// topmenu.php
-Vue.component('menu-item', {
-	data() {
-		return {}
-	},
-	props: [
-		'post',
-	],
-	template: `
-  	<div class="item">
-  		<div class="pic-area grid-x align-middle">
-  			<div class="close cell shrink" @click="del"><img src="images/xxx.svg"></div>
-  			<div class="pic cell shrink show-for-large"><img src="images/pd-1.jpg"></div>
-  			<div class="title cell auto">{{post.title}}</div>
-  		</div>
-
-  		<div class="amount-area grid-x align-center-middle">
-  			<div class="desc cell shrink" @click="desc"><img src="images/desc.svg"></div>
-  			<input type="text cell shrink" name="" id="" v-model="post.count">
-  			<div class="asc cell shrink" @click="inc"><img src="images/asc.svg"></div>
-  		</div>
-
-  		<div class="subtotal">NT.{{post.price}}</div>
-  	</div>
-	`,
-	methods: {
-		inc() {
-			this.post.count++
-		},
-		desc() {
-			if (this.post.count > 1) {
-				this.post.count--
-			}
-		},
-		del() {
-			Swal.fire({
-				template: '#my-template',
-			}).then((result) => {
-				if (result.isConfirmed) {
-					vm_menu.posts = vm_menu.posts.filter(({ id }) => id != this.post.id)
-				}
-			})
-		},
-	},
+$("#menuList-mobile li a").on("click", function() {
+	$(this).closest("li").toggleClass("is-open")
+	$(this).closest("li").find(".submenuListWrap").slideToggle(500)
+	// $(this).toggleClass("is-open")
+	// $(".submenuListWrap", this).slideToggle(500)
 })
-
-
-
-// confirm.php
-Vue.component('item', {
-	data() {
-		return {}
-	},
-	props: [
-		'post',
-	],
-	template: `
-  	<div class="item">
-  		<div class="pic-area grid-x align-middle">
-  			<div class="close cell shrink" @click="del"><img src="images/xxx.svg"></div>
-  			<div class="pic cell shrink"><img src="images/pd-1.jpg"></div>
-  			<div class="title cell auto">{{post.title}}</div>
-  		</div>
-
-  		<div class="price">NT.{{post.price}}</div>
-
-  		<div class="amount-area grid-x align-center-middle">
-  			<div class="desc cell shrink" @click="desc"><img src="images/desc.svg"></div>
-  			<input type="text cell shrink" name="" id="" v-model="post.count">
-  			<div class="asc cell shrink" @click="inc"><img src="images/asc.svg"></div>
-  		</div>
-
-  		<div class="subtotal">NT.{{post.price * post.count}}</div>
-  	</div>
-	`,
-	methods: {
-		inc() {
-			this.post.count++
-		},
-		desc() {
-			if (this.post.count > 1) {
-				this.post.count--
-			}
-		},
-		del() {
-			var answer = confirm("確認要刪除該產品嗎？");
-			if (answer) {
-				vm.posts = vm.posts.filter(({ id }) => id != this.post.id)
-			}
-		},
-	},
-})
-
-
-var posts = [{
-	id: 1,
-	count: 1,
-	price: 240,
-	title: '杏仁薄片 18包/3小盒'
-}, {
-	id: 2,
-	count: 2,
-	price: 150,
-	title: '杏仁薄片 6包/3小盒'
-}]
-
-
-const vm = new Vue({
-	el: '#app',
-	data: {
-		posts,
-	},
-	computed: {
-		total() {
-			let total = 0
-			this.posts.map(({ count, price }) => {
-				total += count * price
-			})
-			return total
-		}
-	},
-	methods: {},
-	mounted() { },
-})
-
-const vm_menu = new Vue({
-	el: '#menuapp',
-	data: {
-		posts,
-	},
-	computed: {
-		total() {
-			let total = 0
-			this.posts.map(({ count, price }) => {
-				total += count * price
-			})
-			return total
-		}
-	},
-	methods: {},
-	mounted() { },
-})
-
-
-
-
 
 
 

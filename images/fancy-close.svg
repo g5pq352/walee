@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" width="32.12" height="32.12" viewBox="0 0 32.12 32.12">
+  <g id="c" data-name="menu">
+    <g>
+      <line x1="1.25" y1="30.87" x2="30.87" y2="1.25" style="fill: none; stroke: #968375; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.49px;"/>
+      <line x1="1.25" y1="1.25" x2="30.87" y2="30.87" style="fill: none; stroke: #968375; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.49px;"/>
+      <path d="M5.71,4s10.63,10.01,18.93,1.78c8.92-8.85-8.59,8.73-8.59,8.73L5.71,4Z" style="fill: #968375;"/>
+    </g>
+  </g>
+</svg>
