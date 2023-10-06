@@ -105,7 +105,7 @@
 
 	<div class="inedx-animationWrap-2">
 		<div class="logo-area">
-			<div class="logo"><img src="images/load-logo.svg"></div>
+			<div class="logo"><img src="images/load-logo.svg" class="show-for-large"><img src="images/load-logo-mobile.svg" class="hide-for-large"></div>
 			<div class="go">
 				<a href="main.php"><div class="arrow-go auto">
 					<div class="grid-x align-center-middle">
@@ -135,108 +135,205 @@ gsap.set($("path"), {
 	drawSVG: "0%",
 })
 
-
-var _line_go = gsap.timeline({
-	paused: true,
-}).to($(".line-1 .one"), {
-	drawSVG: "0% 100%",
-	duration: 1.5,
-}).to($(".line-1 .two"), {
-	drawSVG: "0% 100%",
-	duration: .5,
-}, "<1.4").to($(".line-2 .one"), {
-	drawSVG: '-1% -100%',
-	duration: 1.5,
-}, "<.5").to($(".line-2 .two"), {
-	drawSVG: "0% 100%",
-	duration: .5,
-}).to($(".line-3 path"), {
-	drawSVG: "0% 100%",
-	duration: 1.5,
-}).to($(".line-4 .one"), {
-	drawSVG: "0% 100%",
-	duration: 2,
-}).to($(".line-4 .two"), {
-	drawSVG: "0% 100%",
-	duration: 1,
-}).to($(".line-4 .three"), {
-	drawSVG: "0% 100%",
-	duration: 1,
-}).to($(".line-4 .tree-bg"), {
-	// fill: "#fff",
-	duration: .1,
-}, "<.5").to($(".line-5 .one"), {
-	drawSVG: "-1% -100%",
-	duration: 1,
-}, "<.2").to($(".line-5 .two"), {
-	drawSVG: "-1% -100%",
-	duration: 2,
-})
+if(device == 'mobile'){
+	var _head_one = gsap.timeline({
+		paused: true,
+	}).to(".inedx-animationWrap .head-area .block", {
+		left: "-200%",
+		duration: 1,
+		ease: "none",
+		onCompelete: () =>{
+			_animation_go.play()
+			_line_go.play()
+		}
+	})
 
 
-var _head_one = gsap.timeline({
-	paused: true,
-}).to(".inedx-animationWrap .head-area .block", {
-	delay: 2,
-	x: "100%",
-	duration: 2,
-	ease: "none",
-	onStart: () =>{
-		gsap.to(".inedx-animationWrap .head-area .block", {
-			delay: 1,
-			opacity: 0,
-			duration: 1,
-		})
-	}
-})
+	var _line_go = gsap.timeline({
+		paused: true,
+	}).to($(".line-1 .one"), {
+		drawSVG: "0% 100%",
+		duration: 1.5,
+	}).to($(".line-1 .two"), {
+		drawSVG: "0% 100%",
+		duration: .5,
+	}, "<1.4").to($(".line-2 .one"), {
+		drawSVG: '-1% -100%',
+		duration: 1.5,
+	}, "<.5").to($(".line-2 .two"), {
+		drawSVG: "0% 100%",
+		duration: .5,
+	}).to($(".line-3 path"), {
+		drawSVG: "0% 100%",
+		duration: 1.5,
+	}).to($(".line-4 .one"), {
+		drawSVG: "0% 100%",
+		duration: 2,
+	}).to($(".line-4 .two"), {
+		drawSVG: "0% 100%",
+		duration: 1,
+	}).to($(".line-4 .three"), {
+		drawSVG: "0% 100%",
+		duration: 1,
+	}).to($(".line-4 .tree-bg"), {
+		// fill: "#fff",
+		duration: .1,
+	}, "<.5").to($(".line-5 .one"), {
+		drawSVG: "-1% -100%",
+		duration: 1,
+	}, "<.2").to($(".line-5 .two"), {
+		drawSVG: "-1% -100%",
+		duration: 2,
+	})
+
+	var _all_height = $(".draw-line").height()
+	var _line_4_height = $(".line-4").height() / 4
+
+	var _move_y = _all_height - _line_4_height
+
+	var _animation_go = gsap.timeline({
+		paused: true,
+	}).to(".inedx-animationWrap .animation-draw", {
+		y: _move_y,
+		duration: 6.5,
+		ease: "none",
+	}).to(".inedx-animationWrap", {
+		delay: 2,
+		left: "-122%",
+		top: "37%",
+		duration: 3,
+	}).to(".inedx-animationWrap-2", {
+		left: "0%",
+		duration: 3,
+	}, "<0").to(".inedx-animationWrap-2 .block", {
+		x: "100%",
+		duration: 4,
+		ease: "none",
+		onStart: () =>{
+			gsap.to($(".line-5 .one, .line-5 .two"), {
+				delay: 1,
+				opacity: 0,
+				onComplete: () =>{
+					gsap.to("body", {
+						backgroundColor: "#F9F4ED",
+						duration: .5,
+					})
+				}
+			})
+			gsap.to(".inedx-animationWrap-2 .block", {
+				delay: 2.5,
+				opacity: 0,
+				duration: 4,
+			})
+		}
+	}, "<2")
+
+	gsap.delayedCall(.7, function() {
+		_head_one.play(0)
+	});
+}else{
+	var _line_go = gsap.timeline({
+		paused: true,
+	}).to($(".line-1 .one"), {
+		drawSVG: "0% 100%",
+		duration: 1.5,
+	}).to($(".line-1 .two"), {
+		drawSVG: "0% 100%",
+		duration: .5,
+	}, "<1.4").to($(".line-2 .one"), {
+		drawSVG: '-1% -100%',
+		duration: 1.5,
+	}, "<.5").to($(".line-2 .two"), {
+		drawSVG: "0% 100%",
+		duration: .5,
+	}).to($(".line-3 path"), {
+		drawSVG: "0% 100%",
+		duration: 1.5,
+	}).to($(".line-4 .one"), {
+		drawSVG: "0% 100%",
+		duration: 2,
+	}).to($(".line-4 .two"), {
+		drawSVG: "0% 100%",
+		duration: 1,
+	}).to($(".line-4 .three"), {
+		drawSVG: "0% 100%",
+		duration: 1,
+	}).to($(".line-4 .tree-bg"), {
+		// fill: "#fff",
+		duration: .1,
+	}, "<.5").to($(".line-5 .one"), {
+		drawSVG: "-1% -100%",
+		duration: 1,
+	}, "<.2").to($(".line-5 .two"), {
+		drawSVG: "-1% -100%",
+		duration: 2,
+	})
+
+
+	var _head_one = gsap.timeline({
+		paused: true,
+	}).to(".inedx-animationWrap .head-area .block", {
+		delay: 2,
+		x: "100%",
+		duration: 2,
+		ease: "none",
+		onStart: () =>{
+			gsap.to(".inedx-animationWrap .head-area .block", {
+				delay: 1,
+				opacity: 0,
+				duration: 1,
+			})
+		}
+	})
 
 
 
-var _all_height = $(".draw-line").height()
-var _line_4_height = $(".line-4").height() / 2
+	var _all_height = $(".draw-line").height()
+	var _line_4_height = $(".line-4").height() / 2
 
-var _move_y = _all_height - _line_4_height
+	var _move_y = _all_height - _line_4_height
 
-var _animation_go = gsap.timeline({
-	paused: true,
-}).to(".inedx-animationWrap .animation-draw", {
-	y: _move_y,
-	duration: 6.5,
-	ease: "none",
-}).to(".inedx-animationWrap", {
-	delay: 2.75,
-	left: "-70%",
-	top: "70%",
-	duration: 3,
-}).to(".inedx-animationWrap-2", {
-	left: "0%",
-	duration: 3,
-}, "<0").to(".inedx-animationWrap-2 .block", {
-	x: "100%",
-	duration: 4,
-	ease: "none",
-	onStart: () =>{
-		gsap.to($(".line-5 .one, .line-5 .two"), {
-			delay: 1,
-			opacity: 0,
-			onComplete: () =>{
-				gsap.to("body", {
-					backgroundColor: "#F9F4ED",
-					duration: .5,
-				})
-			}
-		})
-		gsap.to(".inedx-animationWrap-2 .block", {
-			delay: 2.5,
-			opacity: 0,
-			duration: 4,
-		})
-	}
-}, "<2")
+	var _animation_go = gsap.timeline({
+		paused: true,
+	}).to(".inedx-animationWrap .animation-draw", {
+		y: _move_y,
+		duration: 6.5,
+		ease: "none",
+	}).to(".inedx-animationWrap", {
+		delay: 2.75,
+		left: "-70%",
+		top: "70%",
+		duration: 3,
+	}).to(".inedx-animationWrap-2", {
+		left: "0%",
+		duration: 3,
+	}, "<0").to(".inedx-animationWrap-2 .block", {
+		x: "100%",
+		duration: 4,
+		ease: "none",
+		onStart: () =>{
+			gsap.to($(".line-5 .one, .line-5 .two"), {
+				delay: 1,
+				opacity: 0,
+				onComplete: () =>{
+					gsap.to("body", {
+						backgroundColor: "#F9F4ED",
+						duration: .5,
+					})
+				}
+			})
+			gsap.to(".inedx-animationWrap-2 .block", {
+				delay: 2.5,
+				opacity: 0,
+				duration: 4,
+			})
+		}
+	}, "<2")
 
-gsap.delayedCall(.7, function() {
-	_animation_go.play()
-	_head_one.play(0)
-	_line_go.play()
-});
+	gsap.delayedCall(.7, function() {
+		_animation_go.play()
+		_head_one.play(0)
+		_line_go.play()
+	});
+}
 </script>

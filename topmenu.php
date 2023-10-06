@@ -84,7 +84,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;">
+					<a href="overhaul.php">
 						<div class="en">DETAILS</div>
 						<div class="ch-area">
 							<div class="ch">安心細節</div>

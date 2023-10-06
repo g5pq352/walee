@@ -188,7 +188,7 @@
                                 <input class="cell auto five-p" type="text" value="500 元" readonly>
                             </li>
                             <li class="grid-x align-middle">
-                                <div class="title cell shrink">違約補償金</div>
+                                <div class="title cell shrink">退款金額總計</div>
                                 <input class="cell auto five-p" type="text" value="11000 元" readonly>
                             </li>
                             <li class="grid-x align-middle">

@@ -447,6 +447,9 @@
       height: 85px;
     }
   }
+  input::-webkit-date-and-time-value {
+    text-align: left;
+}
 }
 
 @mixin m-star-title() {

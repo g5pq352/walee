@@ -83,13 +83,14 @@
 									<div class="area" data-role="district"></div>
 									<div class="code is-zip" data-role="zipcode"></div>
 								</div>
-								<input type="text" name="reciver-add" class="add show-for-large" value="中山路一段51號4樓">
+								<input type="text" name="reciver-add" class="add checkout-add" value="中山路一段51號4樓">
+							</div>
+							<div class="zip-mobile grid-x align-middle hide-for-large">
+								<div class="zip-come-mobile cell shrink"></div>
+								<!-- <input type="text" name="address" id="" class="address cell auto" placeholder="地址"> -->
 							</div>
 						</li>
-						<li class="zip-mobile grid-x align-middle hide-for-large">
-							<div class="zip-come-mobile cell shrink"></div>
-							<input type="text" name="address" id="" class="address cell auto" placeholder="地址">
-						</li>
+						
 						<li class="grid-x align-top">
 							<div class="title cell shrink">居住樓層</div>
 							<div class="radio-floor">

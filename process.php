@@ -23,7 +23,7 @@
                                         <path d="M119.54,0h80.07C265.58,0,319.14,53.56,319.14,119.54v30.73c0,65.97-53.56,119.54-119.54,119.54h-49.34C67.33,269.8,0,202.47,0,119.54H0C0,53.56,53.56,0,119.54,0Z" transform="translate(319.14 269.8) rotate(-180)" style="fill: #ede5db;"/>
                                     </g>
                                 </svg></div>
-                                <div class="pic"><img src="images/process-1.png"></div>
+                                <div class="pic"><img src="images/process-1.png" width="284"></div>
                                 <div class="drop"><span><img src="images/process-drop.svg"></span></div>
                             </div>
                             <article class="grid-x align-middle">

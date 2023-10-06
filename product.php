@@ -11,7 +11,8 @@
 		<div class="innerWrap">
 			<section>
 				<div class="item">
-					<div class="pic" style="background-image: url('images/product-1.jpg')"></div>
+					<div class="pic show-for-large" style="background-image: url('images/product-1.jpg')"></div>
+					<div class="pic hide-for-large" style="background-image: url('images/product-1-mobile.jpg')"></div>
 				</div>
 				<div class="article-area">
 					<div class="title-1 text-rd-ch" data-delay=".75">100%台灣設計與製造</div>
@@ -434,6 +435,20 @@
 	}
 	
 	if(device == 'mobile'){
+		$(".topmenu-fixed").addClass("is-index-mobile")
+
+		var _windowH = $(window).height() / 2
+		$(window).on("scroll", () => {
+			var _scrollTop = $(window).scrollTop()
+
+			if (_scrollTop > _windowH) {
+				$(".topmenu-fixed").removeClass("is-index-mobile")
+				return false;
+			} else {
+				$(".topmenu-fixed").addClass("is-index-mobile")
+			}
+		})
+
 		var swiper = new Swiper(".islider-swiper", {
 			speed: 300,
 			loop: true,

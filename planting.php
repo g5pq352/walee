@@ -326,5 +326,16 @@
 </html>
 
 <script>
-
+if(device == 'mobile'){
+	$(".articleList li").each(function (i, el) {
+		// show
+		ScrollTrigger.create({
+			trigger: el,
+			start: "top center",
+			end: "bottom center",
+			toggleActions: "play none none none",
+			toggleClass: { targets: el, className: "is-more" },
+		})
+	})
+}
 </script>

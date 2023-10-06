@@ -246,69 +246,71 @@
 		},
 		filters: {},
 		mounted() {
-			$(".text-vue-ch").each(function (i, el) {
-				var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+			if(device != 'mobile'){
+				$(".text-vue-ch").each(function (i, el) {
+					var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
 
-				var _t = new SplitText(el, {
-					type: "chars,words",
-					charsClass: "char++",
+					var _t = new SplitText(el, {
+						type: "chars,words",
+						charsClass: "char++",
+					})
+				
+					shuffleArray(_t.chars);
+				
+					// show
+					var _setting_s = {
+						scrollTrigger: {
+							trigger: el,
+							start: "top 80%",
+							end: "bottom 50%",
+							toggleActions: "play none none none",
+				
+						},
+						delay: .75,
+						duration: 1.5,
+						opacity: 0,
+						stagger: 0.1,
+						// '-webkit-filter': 'blur(3px)',
+						ease: "sine.out",
+					}
+					var _p_s = $(el).data("f")
+					var _obj_s = Object.assign(_setting_s, _p_s);
+					gsap.from(_t.chars, _obj_s);
+				
 				})
-			
-				shuffleArray(_t.chars);
-			
-				// show
-				var _setting_s = {
-					scrollTrigger: {
-						trigger: el,
-						start: "top 80%",
-						end: "bottom 50%",
-						toggleActions: "play none none none",
-			
-					},
-					delay: .75,
-					duration: 1.5,
-					opacity: 0,
-					stagger: 0.1,
-					// '-webkit-filter': 'blur(3px)',
-					ease: "sine.out",
-				}
-				var _p_s = $(el).data("f")
-				var _obj_s = Object.assign(_setting_s, _p_s);
-				gsap.from(_t.chars, _obj_s);
-			
-			})
-			
-			$(".text-vue-en").each(function (i, el) {
-				var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
+				
+				$(".text-vue-en").each(function (i, el) {
+					var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0
 
-				var _t = new SplitText(el, {
-					type: "chars,words",
-					charsClass: "char++",
+					var _t = new SplitText(el, {
+						type: "chars,words",
+						charsClass: "char++",
+					})
+				
+					shuffleArray(_t.chars);
+				
+					// show
+					var _setting_s = {
+						scrollTrigger: {
+							trigger: el,
+							start: "top 80%",
+							end: "bottom 50%",
+							toggleActions: "play none none none",
+				
+						},
+						delay: .75,
+						duration: 1,
+						opacity: 0,
+						stagger: 0.05,
+						// '-webkit-filter': 'blur(3px)',
+						ease: "sine.out",
+					}
+					var _p_s = $(el).data("f")
+					var _obj_s = Object.assign(_setting_s, _p_s);
+					gsap.from(_t.chars, _obj_s);
+				
 				})
-			
-				shuffleArray(_t.chars);
-			
-				// show
-				var _setting_s = {
-					scrollTrigger: {
-						trigger: el,
-						start: "top 80%",
-						end: "bottom 50%",
-						toggleActions: "play none none none",
-			
-					},
-					delay: .75,
-					duration: 1,
-					opacity: 0,
-					stagger: 0.05,
-					// '-webkit-filter': 'blur(3px)',
-					ease: "sine.out",
-				}
-				var _p_s = $(el).data("f")
-				var _obj_s = Object.assign(_setting_s, _p_s);
-				gsap.from(_t.chars, _obj_s);
-			
-			})
+			}
 		},
 		updated() {},
 	})

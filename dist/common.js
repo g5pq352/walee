@@ -310,7 +310,7 @@ $(".scrolldown").on("click", function () {
 });
 
 if (device == 'mobile') {
-	$(".mobile-bg").css("height", $(".menu-fixed .menuListWrap").height() + 76 + 38);
+	// $(".mobile-bg").css("height", $(".menu-fixed .menuListWrap").height() + 76 + 38)
 	var $menu_tl = gsap.timeline({
 		paused: true
 	}).from(".menu-fixed .color-bg", {
@@ -568,11 +568,6 @@ if (device != 'mobile') {
 	$(".content-show").each(function (i, el) {
 		var _delay = $(el).data("delay") != "" ? $(el).data("delay") : 0;
 
-		var _t = new SplitText(el, {
-			type: "chars,words",
-			charsClass: "char++"
-		});
-
 		// show
 		var _setting_s = {
 			scrollTrigger: {
@@ -590,7 +585,7 @@ if (device != 'mobile') {
 		};
 		var _p_s = $(el).data("f");
 		var _obj_s = Object.assign(_setting_s, _p_s);
-		gsap.from(_t.chars, _obj_s);
+		gsap.from($(el), _obj_s);
 	});
 }
 
